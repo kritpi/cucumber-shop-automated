@@ -11,8 +11,14 @@ public class Product {
         this.stock = stock;
     }
 
-    public void cutStock(int quantity) {
-        stock -= quantity;
+    public void cutStock(int quantity) throws Exception {
+        if (stock < quantity){
+
+            throw new Exception("There's not enough products in stock.");
+        }
+        else {
+            stock -= quantity;
+        }
     }
 
     public String getName() {
@@ -21,7 +27,10 @@ public class Product {
     public double getPrice() {
         return price;
     }
-    public int getStock() {
+    public int getStock() throws Exception {
+        if (stock < 0) {
+            throw new Exception("There's not enough products in stock.");
+        }
         return stock;
     }
     public void setName(String name) {
